@@ -3,19 +3,21 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix='$', intents=discord.Intents.all())
 
-TOKEN="MTA2ODE4ODg1NzUzNjg4NDc4Nw.GcgWAf.BQ3iSAIVLkB34uWRWFxoOZF543zWB-fnrRzqfA"
+TOKEN="MTA2ODE4ODg1NzUzNjg4NDc4Nw.GsgAM_.eTOikRmTgoCj3MHyb1VZeFAYq98r8lvzMnTiiQ"
 
 @bot.command()
-async def disconnect(ctx, member: discord.Member):
-    if member.voice is not None:
-        await disconnect(*, force)
+async def kosom(ctx, member : discord.Member, channel : discord.VoiceChannel):
+    # Move the user out of the channel
+    await member.move_to(None)
+    # Deny the `connect` permission for the user in the channel
+    await channel.set_permissions(member, connect=False)
+    print("User has been moved out of the channel and denied the ability to rejoin.")
 
-    else:
-        await ctx.send("This user is not connected to a voice channel.")
+
 
 @bot.event
 async def on_ready():
-        print("Ready")
+    print("555 a7a")
 
        
 
